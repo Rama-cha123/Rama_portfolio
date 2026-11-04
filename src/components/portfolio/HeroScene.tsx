@@ -215,7 +215,7 @@ export default function HeroScene({ active, lite, reducedMotion }: SceneProps) {
           <Lightformer intensity={1.5} position={[0, -4, 2]} scale={[8, 1, 1]} />
         </Environment>
 
-        <group position={[lite ? 0 : 1.4, lite ? 0.7 : 0.1, 0]} scale={lite ? 0.78 : 1}>
+        <group position={[lite ? 0 : 1.4, lite ? 1.25 : 0.1, 0]} scale={lite ? 0.58 : 1}>
           <Float speed={reducedMotion ? 0 : 1.2} rotationIntensity={0.3} floatIntensity={0.6}>
             <Sculpture lite={lite} />
           </Float>

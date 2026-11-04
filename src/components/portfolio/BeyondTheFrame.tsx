@@ -61,14 +61,14 @@ export function BeyondTheFrame() {
         ))}
 
         {openSlots.map((r, i) => (
-          <Reveal key={`slot-${i}`} delay={(i % 3) * 0.06} className={cn(i === 0 && "md:col-span-2")}>
+          <Reveal key={`slot-${i}`} delay={(i % 3) * 0.06} className="">
             <a
               href={INSTAGRAM_PROFILE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
                 "group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-dashed border-border p-5 transition hover:border-lavender/50 hover:bg-surface/50",
-                i === 0 ? "min-h-48" : "min-h-40",
+                "min-h-36",
               )}
             >
               <div className="flex items-start justify-between">
