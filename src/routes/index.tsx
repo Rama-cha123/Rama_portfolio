@@ -1,24 +1,55 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/portfolio/Nav";
+import { Hero } from "@/components/portfolio/Hero";
+import { Marquee } from "@/components/portfolio/Marquee";
+import { About } from "@/components/portfolio/About";
+import { Experience } from "@/components/portfolio/Experience";
+import { CreativeLab } from "@/components/portfolio/CreativeLab";
+import { Showreel } from "@/components/portfolio/Showreel";
+import { BeyondTheFrame } from "@/components/portfolio/BeyondTheFrame";
+import { Projects } from "@/components/portfolio/Projects";
+import { Credentials } from "@/components/portfolio/Credentials";
+import { Contact } from "@/components/portfolio/Contact";
+import { MediaModalProvider } from "@/components/portfolio/MediaModal";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "B. Rama Chandra — AI Technology Intern & Creative Technologist";
+const description =
+  "Portfolio of B. Rama Chandra: Generative AI, cinematic AI video, creative automation and intelligent digital experiences.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <MediaModalProvider>
+      <div className="grain relative">
+        <Nav />
+        <main>
+          <Hero />
+          <Marquee />
+          <About />
+          <Experience />
+          <CreativeLab />
+          <Showreel />
+          <BeyondTheFrame />
+          <Projects />
+          <Credentials />
+          <Contact />
+        </main>
+      </div>
+    </MediaModalProvider>
   );
 }
