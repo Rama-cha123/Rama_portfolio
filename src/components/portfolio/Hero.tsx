@@ -90,7 +90,8 @@ export function Hero() {
         >
           <span className="size-2 animate-pulse-soft rounded-full bg-lavender" />
           <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-            {profile.role}
+            <span className="hidden sm:inline">{profile.role}</span>
+            <span className="sm:hidden">Creative Technologist</span>
           </span>
         </motion.div>
 
