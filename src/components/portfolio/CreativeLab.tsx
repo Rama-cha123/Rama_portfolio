@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 import { Reveal, Section, SectionHeading } from "./primitives";
 
 export function CreativeLab() {
-  const [activeId, setActiveId] = useState(skillCategories[0].id);
-  const active = skillCategories.find((c) => c.id === activeId)!;
+  const [activeId, setActiveId] = useState(skillCategories[0]?.id ?? "");
+  const active = skillCategories.find((c) => c.id === activeId) ?? skillCategories[0]!;
   const activeIndex = skillCategories.indexOf(active);
 
   return (

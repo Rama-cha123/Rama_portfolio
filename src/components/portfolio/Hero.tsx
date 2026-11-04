@@ -42,7 +42,7 @@ export function Hero() {
     let inView = true;
     const sync = () => setActive(visible && inView);
     const io = new IntersectionObserver(([e]) => {
-      inView = e.isIntersecting;
+      inView = !!e?.isIntersecting;
       sync();
     });
     if (ref.current) io.observe(ref.current);
@@ -94,7 +94,7 @@ export function Hero() {
           </span>
         </motion.div>
 
-        <h1 className="font-display text-[13vw] font-extrabold leading-[0.86] tracking-[-0.04em] sm:text-[9.5vw] lg:text-[8.2rem]">
+        <h1 className="font-display text-[7.6vw] font-extrabold leading-[0.9] tracking-[-0.04em] sm:text-[7.2vw] lg:text-[6.2rem]">
           {words.map((w, i) => (
             <span key={w} className="block overflow-hidden">
               <motion.span
@@ -135,7 +135,7 @@ export function Hero() {
               <ArrowDownRight className="size-4 transition group-hover:rotate-[-45deg]" />
             </a>
             <button
-              onClick={() => open(toMedia(videos[featuredIndex], featuredIndex))}
+              onClick={() => { const v = videos[featuredIndex]; if (v) open(toMedia(v, featuredIndex)); }}
               className="group inline-flex items-center gap-2 rounded-full glass px-6 py-3.5 text-sm font-semibold transition hover:border-lavender/60"
             >
               <span className="grid size-6 place-items-center rounded-full bg-aurora text-background">

@@ -54,7 +54,7 @@ export function Projects() {
   const { open } = useMediaModal();
   const [step, setStep] = useState(0);
   const featuredIdx = Math.max(0, videos.findIndex((v) => v.featured));
-  const stack = [featuredIdx, ...videos.map((_, i) => i).filter((i) => i !== featuredIdx && videos[i].orientation === "landscape")].slice(0, 4);
+  const stack = [featuredIdx, ...videos.map((_, i) => i).filter((i) => i !== featuredIdx && videos[i]?.orientation === "landscape")].slice(0, 4);
 
   return (
     <Section id="projects">
@@ -100,7 +100,7 @@ export function Projects() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,color-mix(in_oklab,var(--lavender)_25%,transparent),transparent_60%)]" />
               <div className="group/stack absolute inset-0 flex items-center justify-center">
                 {stack.map((vi, k) => {
-                  const v = videos[vi];
+                  const v = videos[vi]!;
                   const offset = k - (stack.length - 1) / 2;
                   return (
                     <button
@@ -208,8 +208,8 @@ export function Projects() {
                       <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-electric">
                         Stage {step + 1} / {workflow.length}
                       </p>
-                      <p className="mt-2 font-display text-xl font-semibold">{workflow[step].title}</p>
-                      <p className="mt-1 text-sm text-muted-foreground">{workflow[step].body}</p>
+                      <p className="mt-2 font-display text-xl font-semibold">{workflow[step]?.title}</p>
+                      <p className="mt-1 text-sm text-muted-foreground">{workflow[step]?.body}</p>
                     </motion.div>
                   </AnimatePresence>
                 </div>

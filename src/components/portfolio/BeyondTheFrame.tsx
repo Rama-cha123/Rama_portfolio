@@ -185,7 +185,7 @@ function ReelCard({ reel }: { reel: InstagramReel }) {
         embed
           ? open({
               title: label,
-              subtitle: reel.category,
+              ...(reel.category ? { subtitle: reel.category } : {}),
               embedUrl: embed,
               externalUrl: reel.url,
               externalLabel: "Open on Instagram",
