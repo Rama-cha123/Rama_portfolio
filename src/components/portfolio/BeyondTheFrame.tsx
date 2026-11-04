@@ -18,6 +18,9 @@ export function BeyondTheFrame() {
   const prominent = filled.find((r) => r.prominent) ?? filled[0];
   const others = filled.filter((r) => r !== prominent);
   const openSlots = instagramReels.filter((r) => !r.url.trim());
+  // Tiles beyond the 2x2 block beside the featured reel fill rows of 3; stretch the last one to close gaps.
+  const tail = (others.length + openSlots.length - 4) % 3;
+  const lastSpan = tail === 1 ? "md:col-span-3" : tail === 2 ? "md:col-span-2" : "";
 
   return (
     <Section id="reels" className="overflow-hidden">
@@ -61,7 +64,11 @@ export function BeyondTheFrame() {
         ))}
 
         {openSlots.map((r, i) => (
-          <Reveal key={`slot-${i}`} delay={(i % 3) * 0.06} className="">
+          <Reveal
+            key={`slot-${i}`}
+            delay={(i % 3) * 0.06}
+            className={cn(prominent && i === openSlots.length - 1 && lastSpan)}
+          >
             <a
               href={INSTAGRAM_PROFILE_URL}
               target="_blank"

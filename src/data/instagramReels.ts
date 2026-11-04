@@ -51,7 +51,6 @@ export const instagramReels: InstagramReel[] = [
   { url: "", category: "Fantasy & Visual Effects" },
   { url: "", category: "Experimental AI Films" },
   { url: "", category: "Creative AI Animations" },
-  { url: "", category: "Mythological Cinematic Videos" },
 ];
 
 /** Extracts the Reel code and returns the official embed URL, or null. */
